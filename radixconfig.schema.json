@@ -1,0 +1,293 @@
+{
+  "definitions": {},
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/root.json",
+  "type": "object",
+  "title": "The Root Schema",
+  "required": [
+    "apiVersion",
+    "kind",
+    "metadata",
+    "spec"
+  ],
+  "properties": {
+    "apiVersion": {
+      "$id": "#/properties/apiVersion",
+      "type": "string",
+      "title": "The Apiversion Schema",
+      "default": "",
+      "examples": [
+        "radix.equinor.com/v1"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "kind": {
+      "$id": "#/properties/kind",
+      "type": "string",
+      "title": "The Kind Schema",
+      "default": "",
+      "examples": [
+        "RadixApplication"
+      ],
+      "pattern": "^(.*)$"
+    },
+    "metadata": {
+      "$id": "#/properties/metadata",
+      "type": "object",
+      "title": "The Metadata Schema",
+      "required": [
+        "name"
+      ],
+      "properties": {
+        "name": {
+          "$id": "#/properties/metadata/properties/name",
+          "type": "string",
+          "title": "The Name Schema",
+          "default": "",
+          "examples": [
+            "myapp"
+          ],
+          "pattern": "^(.*)$"
+        }
+      }
+    },
+    "spec": {
+      "$id": "#/properties/spec",
+      "type": "object",
+      "title": "The Spec Schema",
+      "required": [
+        "environments",
+        "components"
+      ],
+      "properties": {
+        "environments": {
+          "$id": "#/properties/spec/properties/environments",
+          "type": "array",
+          "title": "The Environments Schema",
+          "items": {
+            "$id": "#/properties/spec/properties/environments/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "name",
+              "build"
+            ],
+            "properties": {
+              "name": {
+                "$id": "#/properties/spec/properties/environments/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "dev"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "build": {
+                "$id": "#/properties/spec/properties/environments/items/properties/build",
+                "type": "object",
+                "title": "The Build Schema",
+                "required": [
+                  "from"
+                ],
+                "properties": {
+                  "from": {
+                    "$id": "#/properties/spec/properties/environments/items/properties/build/properties/from",
+                    "type": "string",
+                    "title": "The From Schema",
+                    "default": "",
+                    "examples": [
+                      "master"
+                    ],
+                    "pattern": "^(.*)$"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "components": {
+          "$id": "#/properties/spec/properties/components",
+          "type": "array",
+          "title": "The Components Schema",
+          "items": {
+            "$id": "#/properties/spec/properties/components/items",
+            "type": "object",
+            "title": "The Items Schema",
+            "required": [
+              "name",
+              "src",
+              "ports",
+              "public"
+            ],
+            "properties": {
+              "name": {
+                "$id": "#/properties/spec/properties/components/items/properties/name",
+                "type": "string",
+                "title": "The Name Schema",
+                "default": "",
+                "examples": [
+                  "frontend"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "src": {
+                "$id": "#/properties/spec/properties/components/items/properties/src",
+                "type": "string",
+                "title": "The Src Schema",
+                "default": "",
+                "examples": [
+                  "frontend"
+                ],
+                "pattern": "^(.*)$"
+              },
+              "ports": {
+                "$id": "#/properties/spec/properties/components/items/properties/ports",
+                "type": "array",
+                "title": "The Ports Schema",
+                "items": {
+                  "$id": "#/properties/spec/properties/components/items/properties/ports/items",
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "required": [
+                    "name",
+                    "port"
+                  ],
+                  "properties": {
+                    "name": {
+                      "$id": "#/properties/spec/properties/components/items/properties/ports/items/properties/name",
+                      "type": "string",
+                      "title": "The Name Schema",
+                      "default": "",
+                      "examples": [
+                        "http"
+                      ],
+                      "pattern": "^(.*)$"
+                    },
+                    "port": {
+                      "$id": "#/properties/spec/properties/components/items/properties/ports/items/properties/port",
+                      "type": "integer",
+                      "title": "The Port Schema",
+                      "default": 0,
+                      "examples": [
+                        80
+                      ]
+                    }
+                  }
+                }
+              },
+              "public": {
+                "$id": "#/properties/spec/properties/components/items/properties/public",
+                "type": "boolean",
+                "title": "The Public Schema",
+                "default": false,
+                "examples": [
+                  true
+                ]
+              },
+              "environmentConfig": {
+                "$id": "#/properties/spec/properties/components/items/properties/environmentConfig",
+                "type": "array",
+                "title": "The Environmentconfig Schema",
+                "default": null,
+                "items": {
+                  "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items",
+                  "type": "object",
+                  "title": "The Items Schema",
+                  "required": [
+                    "environmentName"
+                  ],
+                  "properties": {
+                    "environmentName": {
+                      "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/environmentName",
+                      "type": "string",
+                      "title": "The Environmentname Schema",
+                      "default": "",
+                      "examples": [
+                        "prod"
+                      ],
+                      "pattern": "^(.*)$"
+                    },
+                    "monitoring": {
+                      "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/monitoring",
+                      "type": "boolean",
+                      "title": "The Monitoring Schema",
+                      "default": false,
+                      "examples": [
+                        true
+                      ]
+                    },
+                    "resources": {
+                      "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources",
+                      "type": "object",
+                      "title": "The Resources Schema",
+                      "default": null,
+                      "properties": {
+                        "requests": {
+                          "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/requests",
+                          "type": "object",
+                          "title": "The Requests Schema",
+                          "default": null,
+                          "properties": {
+                            "memory": {
+                              "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/requests/properties/memory",
+                              "type": "string",
+                              "title": "The Memory Schema",
+                              "default": "",
+                              "examples": [
+                                "64Mi"
+                              ],
+                              "pattern": "^(.*)$"
+                            },
+                            "cpu": {
+                              "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/requests/properties/cpu",
+                              "type": "string",
+                              "title": "The Cpu Schema",
+                              "default": "",
+                              "examples": [
+                                "100m"
+                              ],
+                              "pattern": "^(.*)$"
+                            }
+                          }
+                        },
+                        "limits": {
+                          "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/limits",
+                          "type": "object",
+                          "title": "The Limits Schema",
+                          "default": null,
+                          "properties": {
+                            "memory": {
+                              "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/limits/properties/memory",
+                              "type": "string",
+                              "title": "The Memory Schema",
+                              "default": "",
+                              "examples": [
+                                "128Mi"
+                              ],
+                              "pattern": "^(.*)$"
+                            },
+                            "cpu": {
+                              "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/limits/properties/cpu",
+                              "type": "string",
+                              "title": "The Cpu Schema",
+                              "default": "",
+                              "examples": [
+                                "200m"
+                              ],
+                              "pattern": "^(.*)$"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
