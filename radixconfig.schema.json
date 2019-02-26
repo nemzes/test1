@@ -3,7 +3,7 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "$id": "http://example.com/root.json",
   "type": "object",
-  "title": "The Root Schema",
+  "title": "radixconfig.yaml schema",
   "required": [
     "apiVersion",
     "kind",
@@ -14,27 +14,27 @@
     "apiVersion": {
       "$id": "#/properties/apiVersion",
       "type": "string",
-      "title": "The Apiversion Schema",
+      "title": "apiVersion, as used in Kubernetes",
       "default": "",
       "examples": [
         "radix.equinor.com/v1"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^[-A-Za-z0-9+&@#/%?=~_|!:,.;]+[-A-Za-z0-9+&@#/%=~_|]$"
     },
     "kind": {
       "$id": "#/properties/kind",
       "type": "string",
-      "title": "The Kind Schema",
+      "title": "Resource kind",
       "default": "",
       "examples": [
         "RadixApplication"
       ],
-      "pattern": "^(.*)$"
+      "pattern": "^RadixApplication$"
     },
     "metadata": {
       "$id": "#/properties/metadata",
       "type": "object",
-      "title": "The Metadata Schema",
+      "title": "Metadata, as used in Kubernetes",
       "required": [
         "name"
       ],
@@ -47,14 +47,14 @@
           "examples": [
             "myapp"
           ],
-          "pattern": "^(.*)$"
+          "pattern": "^[a-z][a-z0-9\\-\\.]*[a-z0-9]$"
         }
       }
     },
     "spec": {
       "$id": "#/properties/spec",
       "type": "object",
-      "title": "The Spec Schema",
+      "title": "Application spec",
       "required": [
         "environments",
         "components"
