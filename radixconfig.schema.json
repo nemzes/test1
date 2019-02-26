@@ -113,6 +113,7 @@
             "$id": "#/properties/spec/properties/components/items",
             "type": "object",
             "title": "The Items Schema",
+            "additionalProperties": false,
             "required": [
               "name",
               "src",
@@ -227,6 +228,8 @@
                           "type": "object",
                           "title": "The Requests Schema",
                           "default": null,
+                          "minProperties": 1,
+                          "additionalProperties": false,
                           "properties": {
                             "memory": {
                               "$id": "#/properties/spec/properties/components/items/properties/environmentConfig/items/properties/resources/properties/requests/properties/memory",
